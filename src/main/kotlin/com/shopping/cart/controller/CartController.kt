@@ -20,5 +20,4 @@ class CartController {
         return ResponseEntity.status(200).build()
     }
 
-    @PutMapping("/{cartId}")
 }
