@@ -6,6 +6,7 @@ import com.shopping.cart.provider.ProductRepository
 import org.springframework.stereotype.Service
 import java.lang.Exception
 import java.lang.RuntimeException
+import java.util.logging.Logger
 
 @Service
 class GetProductsFromCartAction(
@@ -13,7 +14,10 @@ class GetProductsFromCartAction(
     private val productRepository: ProductRepository
 ) {
 
+    val logger = Logger.getLogger("GetProductsFromtCartAction")
+
     fun getProductsFromCart(cartId: String): List<Product> {
+        logger.info("Getting products from cart $cartId")
         return try {
             cartRepository.findByUUID(cartId)?.let { cart ->
                 cart.products.map { product ->
