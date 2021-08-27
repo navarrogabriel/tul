@@ -1,5 +1,11 @@
 package com.shopping.cart.model
 
 data class Cart(
-    val products: List<Product>
+    val uuid: String? = null,
+    val products: MutableList<CartProduct> = mutableListOf(),
+    var cartStatus: CartStatus = CartStatus.PENDING
 )
+
+enum class CartStatus {
+    PENDING, COMPLETED
+}
